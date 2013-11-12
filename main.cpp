@@ -30,6 +30,6 @@ void testGraph(){
 
 int main(){
   testGraph();
-
+  std::cin.ignore();
   return 0;
 }
