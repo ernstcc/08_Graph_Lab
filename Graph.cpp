@@ -7,10 +7,12 @@
 
 Graph::Graph(unsigned int numNodes){
   //TODO
+	int* adjList = new int[numNodes];
+	
 }
 
 int Graph::getCost(int node1, int node2){
-  //TODO
+  //TODO	
   return -1;
 }
 
