@@ -7,10 +7,11 @@
 
 Graph::Graph(unsigned int numNodes){
 	adjList.resize(numNodes);
-  //TODO
 }
 
 int Graph::getCost(int node1, int node2){
+	if(node1>adjList.size()||node2>adjList.size())
+		return -1;
 	std::vector<Edge> x =adjList.at(node1).edgeList;
 	std::vector<Edge> y =adjList.at(node2).edgeList;
 
@@ -28,6 +29,8 @@ int Graph::getCost(int node1, int node2){
 void Graph::addEdge(int node1, int node2, double cost){
 	if(cost<0)
 		throw std::string("Can't have a cost lower than 0");
+	if(node1>adjList.size()||node2>adjList.size())
+		return;
 	Edge* x = new Edge(cost, node2);
 	adjList.at(node1).edgeList.push_back(*x);
 	x= new Edge(cost, node1);
@@ -38,6 +41,8 @@ void Graph::addEdge(int node1, int node2, double cost){
 //Remove the edge from node1 to node2, and also from node2 to node1.
 // If there are no such edges, then don't do anything.
 void Graph::removeEdge(int node1, int node2){
+	if(node1>adjList.size()||node2>adjList.size())
+		return;
 	for(unsigned int i=0;i<adjList.at(node1).edgeList.size();i++)
 		if(adjList.at(node1).edgeList.at(i).dest==node2){
 			adjList.at(node1).edgeList.at(i).cost=-1;
@@ -49,6 +54,4 @@ void Graph::removeEdge(int node1, int node2){
 			adjList.at(node2).edgeList.at(i).cost=-1;
 			break;
 		}
-
-  //TODO
 }

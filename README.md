@@ -17,20 +17,19 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. add - TODO
-2. remove - TODO
-3. getCost - TODO
+1. add - Yes add works, simply creating more edges and adding them the the edgelist
+2. remove - Yes remove works by setting the edge cost to -1
+3. getCost - Get cost works by checking both nodes and returning if either of them have a connection to the other
 
 #### 2. For each of your methods, what is the worst-case running time? You may write your answer in terms of `n` (the number of vertices), `m` (the number of edges), `d` (the maximum degree of any node in the graph), or any combination of these. Try to give the most informative bound that you can.
 
-1. add - TODO
-2. remove - TODO
-3. getCost - TODO
+1. add - constant time, -though it might crash if someone tried to add outside the bounds of the array.- Fixed that.
+2. remove - O(2m) It goes through 2 loops of all the edges.
+3. getCost - O(2m) It goes through 2 loops of all the edges
 
-TODO
 
 #### 3. Exercise 12.1 from http://opendatastructures.org/ods-cpp/12_4_Discussion_Exercises.html. You may want to draw by hand, upload the picture online (Instagram, Twitter, imgur, or some place like that), and then just put a link here.
-
+http://imgur.com/oEjdyS9
 #### 4. What is one question that confused you about this exercise, or one piece of advice you would share with students next semester?
 
-TODO
+Just get this one started. If you've been paying any attention at all it is really easy.
