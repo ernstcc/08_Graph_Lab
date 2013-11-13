@@ -7,6 +7,7 @@
 
 Graph::Graph(unsigned int numNodes){
   //TODO
+    edgeList = new std::vector<Edge>(numNodes);
 }
 
 int Graph::getCost(int node1, int node2){
