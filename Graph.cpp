@@ -24,37 +24,18 @@ void Graph::addEdge(int node1, int node2, double cost){
 	  throw (std::string) "cost must be >= 0";
   Edge* toAdd = new Edge(cost,node2);
   adjList[node1].edgeList.push_back(*toAdd);
-  toAdd = new Edge(cost,node2);
+  toAdd = new Edge(cost,node1);
   adjList[node2].edgeList.push_back(*toAdd);
 }
 
 //Remove the edge from node1 to node2, and also from node2 to node1.
 // If there are no such edges, then don't do anything.
 void Graph::removeEdge(int node1, int node2){
-  int removeEdgeHere=-1;
-  int i = 0;
-  while(i<adjList[node1].edgeList.size()){
-	  if(adjList[node1].edgeList[i].dest=node2){
-		  removeEdgeHere = i;
-		  break;
-	  }
-	  i++;
-  }
-  if(removeEdgeHere!=-1){
-	adjList[node1].edgeList[removeEdgeHere]=Edge();
-  }
+  for(int i = 0; i < adjList[node1].edgeList.size(); i++)
+	  if(adjList[node1].edgeList[i].dest==node2)
+		  adjList[node1].edgeList.erase(adjList[node1].edgeList.begin()+i);
 
-  removeEdgeHere=-1;
-  i = 0;
-  while(i<adjList[node2].edgeList.size()){
-	  if(adjList[node2].edgeList[i].dest=node1){
-		  removeEdgeHere = i;
-		  break;
-	  }
-	  i++;
-  }
-
-  if(removeEdgeHere!=-1){
-	adjList[node2].edgeList[removeEdgeHere]=Edge();
-  }
+  for(int i = 0; i < adjList[node2].edgeList.size(); i++)
+	  if(adjList[node2].edgeList[i].dest==node1)
+		  adjList[node2].edgeList.erase(adjList[node2].edgeList.begin()+i);
 }
