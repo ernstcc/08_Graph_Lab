@@ -8,9 +8,10 @@
 Graph::Graph(unsigned int numNodes){
   //TODO
 	 //std::vector<Node> adjList[numNodes];	
-	//std::vector<Node> adjList
-	int* adjList = new int[numNodes];
+	std::vector<Node> adjList;
+	//int* adjList = new int[numNodes];
 	//int* edgeList = new int[1];	
+	std::vector<Node> edgeList;
 	Edge();
 }
 
