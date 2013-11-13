@@ -1,5 +1,4 @@
 
-
 /*****
  * Author   : Mingwei zhong
  * Date     : 2013-11-12
@@ -110,6 +109,7 @@ void Graph::removeEdge(int node1, int node2)
 
     for (int i = 0; i < SizeOfEdgeTwo; i++)
     {
+        if (adjList[node2].edgeList[i].dest == node1)
         {
             adjList[node2].edgeList.erase(adjList[node2].edgeList.begin()+i);
 
