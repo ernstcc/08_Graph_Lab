@@ -1,5 +1,3 @@
-
-
 /*****
  * Author   : Mingwei zhong
  * Date     : 2013-11-12
@@ -47,6 +45,17 @@ int Graph::getCost(int node1, int node2)
           return (int)adjList[node1].edgeList[i].cost;
         }
     }
+    
+    int SizeOfEdgeTwo = (int)adjList[node2].edgeList.size();
+
+    for (int i = 0; i < SizeOfEdgeTwo; i++)
+    {
+        if (adjList[node2].edgeList[i].dest == node1)
+        {
+            return (int)adjList[node2].edgeList[i].cost;
+        }
+    }
+    
 
     return -1;
 }
@@ -110,6 +119,7 @@ void Graph::removeEdge(int node1, int node2)
 
     for (int i = 0; i < SizeOfEdgeTwo; i++)
     {
+        if (adjList[node2].edgeList[i].dest == node1)
         {
             adjList[node2].edgeList.erase(adjList[node2].edgeList.begin()+i);
 
