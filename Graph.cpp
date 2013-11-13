@@ -16,14 +16,13 @@ Graph::Graph(unsigned int numNodes){
 
 int Graph::getCost(int node1, int node2){
   //TODO 
-	int cost = -1;
+	int cost2 = -1;
 	for (int j = 0; j < adjList[node1].edgeList.size(); j++){
 		if (adjList[node1].edgeList[j].dest == node2){
-			cost = adjList[node1].edgeList[j].cost;
+			cost2 = adjList[node1].edgeList[j].cost;
 		}
 	}
-	
-  return cost;
+ return cost2;
 }
 
 //Add an edge from node1 to node2, and from node2 to node1, with
@@ -33,8 +32,8 @@ void Graph::addEdge(int node1, int node2, double cost){
 	if (cost < 0)
 		throw std::string("cost < 0");
 
-	for (int i = 0; i < adjList.size(); i++){
-		for (int j = 0; j < adjList[i].edgeList.size(); j++){
+	//for (int i = 0; i < adjList.size(); i++){
+	for (int j = 0; j < adjList[node1].edgeList.size(); j++){
 		//if (adjList[i] if already there rewrite cost
 	//adjList[node1]->second = node1;
 		//adjList[node1].edgeList->insert(new Edge());
@@ -42,14 +41,16 @@ void Graph::addEdge(int node1, int node2, double cost){
 				adjList[node1].edgeList[j].cost = cost;
 				adjList[node1].edgeList[j].dest = node2;
 			}
-			if (adjList[node2].edgeList[j].cost == -1){
-				adjList[node2].edgeList[j].cost = cost;
-				adjList[node2].edgeList[j].dest = node1;
+	}
+	for (int i = 0; i < adjList[node2].edgeList.size(); i++){
+			if (adjList[node2].edgeList[i].cost == -1){
+				adjList[node2].edgeList[i].cost = cost;
+				adjList[node2].edgeList[i].dest = node1;
 			}
 
 		}
 	//adjList.insert (node1,node2,cost);
-	}
+
 
 	//Edge(cost, node2);
 	//Edge(cost, node1);
