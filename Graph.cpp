@@ -7,14 +7,20 @@
 
 Graph::Graph(unsigned int numNodes){
   //TODO
+	 //std::vector<Node> adjList[numNodes];	
+	//std::vector<Node> adjList
 	int* adjList = new int[numNodes];
-	int* edgeList = new int[1];	
+	//int* edgeList = new int[1];	
 	Edge();
 }
 
 int Graph::getCost(int node1, int node2){
   //TODO 	
-
+	for (int i = 0; i < adjList.size(); i++){
+		//if (adjList[i] == node1){
+	
+	//	}
+	}
   return -1;
 }
 
@@ -24,6 +30,7 @@ void Graph::addEdge(int node1, int node2, double cost){
   //TODO
 	if (cost < 0)
 		throw std::string("cost < 0");
+	
 	Edge(cost,node2);
 	Edge(cost, node1);
 
