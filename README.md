@@ -31,7 +31,8 @@ Questions
 3. getCost -  O(d), since every time an edge is added, all the program does is simply jump to the point in the adjancey list that contains the edges that connect to that node. Then the method will look at all th methods and look for the edge that connects to the specified node, and return its cost
 
 
-#### 3. Exercise 12.1 from http://opendatastructures.org/ods-cpp/12_4_Discussion_Exercises.html. You may want to draw by hand, upload the picture online (Instagram, Twitter, imgur, or some place like that), and then just put a link here.
+#### 3. Exercise 12.1 from http://opendatastructures.org/ods-cpp/12_4_Discussion_Exercises.html. 
+http://github.com/continnd/08_Graph_Lab/blob/continnd/exercise)12.1.png
 
 #### 4. What is one question that confused you about this exercise, or one piece of advice you would share with students next semester?
 
