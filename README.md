@@ -32,7 +32,7 @@ Questions
 
 
 #### 3. Exercise 12.1 from http://opendatastructures.org/ods-cpp/12_4_Discussion_Exercises.html. 
-http://github.com/continnd/08_Graph_Lab/blob/continnd/exercise)12.1.png
+https://github.com/continnd/08_Graph_Lab/blob/continnd/exercise_12.1.png
 
 #### 4. What is one question that confused you about this exercise, or one piece of advice you would share with students next semester?
 
