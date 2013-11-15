@@ -7,16 +7,15 @@
 #include <iostream>
 
 Graph::Graph(unsigned int numNodes){
-	//std::vector<Node> edgeList;
-	//std::vector<Node> adjList;
 	adjList.resize(numNodes);
 	std::cout << adjList.size() << std::endl;
 	for (int i = 0; i < adjList.size(); i++){
 		Edge();
-		Edge();
+		adjList[i].edgeList.resize(1);
+		std::cout << adjList[i].edgeList.size() << std::endl;
 	}
 	
-	std::cout << adjList[0].edgeList.size() << std::endl;
+	
 }
 
 int Graph::getCost(int node1, int node2){
