@@ -27,8 +27,8 @@ Questions
 #### 2. For each of your methods, what is the worst-case running time? You may write your answer in terms of `n` (the number of vertices), `m` (the number of edges), `d` (the maximum degree of any node in the graph), or any combination of these. Try to give the most informative bound that you can.
 
 1. add - The worst-case running time for this method is constant time. The running time of add is depending on the method call to push_back, and I am assuming push_back take constant time
-2. remove - TODO
-3. getCost - TODO
+2. remove - The worst-case running time for remove is O(d1 + d2). The degree of node1 plus the degree for node 2.
+3. getCost - The worst-case running time for getCost is O(d1), the degree of node1. Worst case, we need loop through the whole edge list, which is the degree of node1. 
 
 TODO
 
