@@ -17,8 +17,24 @@ Graph::Graph(unsigned int numNodes){
 
 
 int Graph::getCost(int node1, int node2){
-  //TODO
-  return -1;
+ int p=0;
+    
+    // go though all the nodes
+    for (int i=0; i<adjList.size(); i++) {
+       // go though all the lists on each node
+        
+        
+        while(p < adjList[node1].edgeList.size()){
+        if(adjList[node1].edgeList[p].dest==node2)
+            
+            return adjList[node1].edgeList[i].cost;
+        p++;
+       
+        }
+    }
+    
+    return -1;
+
 }
 
 //Add an edge from node1 to node2, and from node2 to node1, with
