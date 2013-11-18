@@ -34,11 +34,12 @@ void Graph::addEdge(int node1, int node2, double cost){
         if(cost < 0.0) throw "Cost must be positive!";
 
         std::vector<Edge>::iterator it;
-        int i;
-        for(it = adjList[node1].edgeList.begin(); it != adjList[node1].edgeList.end(); it++, i++){
+        for(it = adjList[node1].edgeList.begin(); it != adjList[node1].edgeList.end(); it++){
                 if((*it).dest == node2){
                         (*it).cost = cost;
-                        adjList[node2].edgeList[i].cost = cost;
+						for(it = adjList[node2].edgeList.begin(); it != adjList[node2].edgeList.end(); it++){
+								(*it).cost = cost;
+						}
                 }
                 if((*it).dest > node2){
                         it--;
@@ -64,5 +65,21 @@ void Graph::addEdge(int node1, int node2, double cost){
 //Remove the edge from node1 to node2, and also from node2 to node1.
 // If there are no such edges, then don't do anything.
 void Graph::removeEdge(int node1, int node2){
-  //TODO
+  
+	std::vector<Edge>::iterator it;
+	for(it = adjList[node1].edgeList.begin(); it != adjList[node1].edgeList.end(); it++){
+
+		if( (*it).dest == node2){
+			adjList[node1].edgeList.erase(it);
+
+			for(it = adjList[node2].edgeList.begin(); it != adjList[node2].edgeList.end(); it++){
+					adjList[node2].edgeList.erase(it);
+					return;
+			}
+		}
+
+		if ((*it).dest > node2) return;
+
+	}
+
 }
