@@ -48,8 +48,8 @@ void Graph::addEdge(int node1, int node2, double cost){
         
         if (adjList[node1].edgeList[j].cost == -1){
             if(adjList[node1].edgeList[j].dest == -1){
-               adjList[node1].edgeList[j].cost = cost;
                adjList[node1].edgeList[j].dest = node2;
+               adjList[node1].edgeList[j].cost = cost;
                   }
         }
     }
@@ -57,9 +57,11 @@ void Graph::addEdge(int node1, int node2, double cost){
     for (int p = 0; p < adjList[node2].edgeList.size(); p++){
         
         if (adjList[node2].edgeList[p].cost == -1){
+            
             if(adjList[node2].edgeList[p].dest == -1){
-                adjList[node2].edgeList[p].cost = cost;
                 adjList[node2].edgeList[p].dest = node1;
+                adjList[node2].edgeList[p].cost = cost;
+            
             }
         }
 
@@ -70,23 +72,29 @@ void Graph::addEdge(int node1, int node2, double cost){
 }
 }
 // erase from http://www.cplusplus.com/reference/vector/vector/erase/
-// and from book
+// remove method from book
 //Remove the edge from node1 to node2, and also from node2 to node1.
 // If there are no such edges, then don't do anything.
 void Graph::removeEdge(int node1, int node2){
       int p=0;
-            while(p < adjList[node1].edgeList.size()){
-                if(adjList[node1].edgeList[p].dest==node2)
-            adjList[node1].edgeList.erase(adjList[node1].edgeList.begin()+p);
+           
+            while(p < adjList[node2].edgeList.size()){
+               if(adjList[node2].edgeList[p].dest==node1)
+            adjList[node2].edgeList.erase(adjList[node2].edgeList.begin()+p);
                     
             p++;
+         
+            }
         }
     
+    
     int q=0;
-    while(q < adjList[node2].edgeList.size()){
-        if(adjList[node2].edgeList[q].dest==node1)
-            adjList[node2].edgeList.erase(adjList[node2].edgeList.begin()+q);
+    while(q < adjList[node1].edgeList.size()){
+        if(adjList[node1].edgeList[q].dest==node2)
+            adjList[node1].edgeList.erase(adjList[node1].edgeList.begin()+q);
             
         q++;
+       
+        }
     }
 }
