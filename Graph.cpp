@@ -5,9 +5,16 @@
  */
 #include "Graph.h"
 
+// used resize from http://www.cplusplus.com/reference/vector/vector/resize/
+
 Graph::Graph(unsigned int numNodes){
-  //TODO
+    adjList.resize(numNodes);
+    for (int i = 0; i < adjList.size(); i++)
+      adjList[i].edgeList.resize(1);
+        
+    
 }
+
 
 int Graph::getCost(int node1, int node2){
   //TODO
