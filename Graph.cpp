@@ -6,7 +6,7 @@
 #include "Graph.h"
 
 // used resize from http://www.cplusplus.com/reference/vector/vector/resize/
-
+//
 Graph::Graph(unsigned int numNodes){
     adjList.resize(numNodes);
     for (int i = 0; i < adjList.size(); i++)
