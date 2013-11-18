@@ -30,10 +30,9 @@ Questions
 2. remove - The remove method also takes O(1) time, because when an edge is needed to be removed, the vector is accessed randomly. Because the vector is accessed randomly, that operation takes O(1) time. Then, when finding the list of edges for the NodeThe rest of the method is simply changing variables around, which takes constant time. 
 3. getCost - Similarly to add() and remove(), getCost takes O(1) time. GetCost() automatically finds the first node given, accesses it randomly, and uses a different vector to find all of the edges of the node. At the index of the second Node given, the edge for that specific node is listed. The method returns that value, and therefore only takes O(1) time.
 
-TODO
 
 #### 3. Exercise 12.1 from http://opendatastructures.org/ods-cpp/12_4_Discussion_Exercises.html. You may want to draw by hand, upload the picture online (Instagram, Twitter, imgur, or some place like that), and then just put a link here.
-
+	http://oi44.tinypic.com/i70t3m.jpg Picture of hand drawn Graph structure
 #### 4. What is one question that confused you about this exercise, or one piece of advice you would share with students next semester?
 
 Definately look at the std::vector class as soon as possible. Using the vector class makes the lab much easier and easier to understand.
