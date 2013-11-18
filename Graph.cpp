@@ -40,7 +40,34 @@ int Graph::getCost(int node1, int node2){
 //Add an edge from node1 to node2, and from node2 to node1, with
 // the given cost. If the cost is < 0, throw a string exception.
 void Graph::addEdge(int node1, int node2, double cost){
-  //TODO
+ if(cost<=0)
+    throw  ("Cost can't be less than zero");
+    
+ else{
+    for (int j = 0; j < adjList[node1].edgeList.size(); j++){
+        
+        if (adjList[node1].edgeList[j].cost == -1){
+            if(adjList[node1].edgeList[j].dest == -1){
+               adjList[node1].edgeList[j].cost = cost;
+               adjList[node1].edgeList[j].dest = node2;
+                  }
+        }
+    }
+    
+    for (int p = 0; p < adjList[node2].edgeList.size(); p++){
+        
+        if (adjList[node2].edgeList[p].cost == -1){
+            if(adjList[node2].edgeList[p].dest == -1){
+                adjList[node2].edgeList[p].cost = cost;
+                adjList[node2].edgeList[p].dest = node1;
+            }
+        }
+
+    
+    
+    
+}
+}
 }
 
 //Remove the edge from node1 to node2, and also from node2 to node1.
