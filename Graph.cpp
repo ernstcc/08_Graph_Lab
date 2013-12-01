@@ -45,7 +45,19 @@ void Graph::addEdge(int node1, int node2, double cost){
 //Remove the edge from node1 to node2, and also from node2 to node1.
 // If there are no such edges, then don't do anything.
 void Graph::removeEdge(int node1, int node2){
+    //do nothing if no such edge.
     
+    int m=-1;
+    //change m if we find node1 has an edge to node2. if m does not change than we don't have an
+    //edge  between them so we do nothing and return.
+    for (int i=0; i<adjList[node1].edgeList.size(); i++) {
+        if (adjList[node1].edgeList[i].dest==node2) {
+            m=i;
+        }
+    }
+    if (m==-1) {
+        return;
+    }
     
     Node* toDel = &adjList[node1];
     //set edgeList[node2] cost and del to defuaults
