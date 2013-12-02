@@ -30,6 +30,7 @@ Questions
 
 #### 3. Exercise 12.1 from http://opendatastructures.org/ods-cpp/12_4_Discussion_Exercises.html. You may want to draw by hand, upload the picture online (Instagram, Twitter, imgur, or some place like that), and then just put a link here.
 adj list http://i.imgur.com/jw9EKIV.png?1?9332
+
 //note-could not make a table with 11 rows so 0--0 suggests a 0 whereas if the arrangement were true itd be 0--1 in the first column.
 adj matrix. http://i.imgur.com/reAz3Mx.png?1?1791
 
