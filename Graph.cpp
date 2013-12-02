@@ -32,6 +32,9 @@ int Graph::getCost(int node1, int node2){
 //Add an edge from node1 to node2, and from node2 to node1, with
 // the given cost. If the cost is < 0, throw a string exception.
 void Graph::addEdge(int node1, int node2, double cost){
+    //looked at https://github.com/MiamiOH-CSE274/08_Graph_Lab/blob/bickledb/Graph.cpp
+    //to see how to access &adjList, from there it was basic pointers.
+    
     Node* toAdd = &adjList[node1];
     //set node1's edgelist at node2 to have cost and to have dest node2
     toAdd->edgeList[node2].cost = cost;
