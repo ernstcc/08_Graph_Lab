@@ -74,7 +74,7 @@ void Graph::removeEdge(int node1, int node2){
     toDel->edgeList[node1].dest=-1;
     
 }
-void Graph::DFS(int node1){
+void Graph::BFS(int node1){
     //bool allSeen= false;
     int count=0;
     std::stack<int> open;
