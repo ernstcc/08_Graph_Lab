@@ -10,6 +10,14 @@ Graph::Graph(unsigned int numNodes){
 }
 
 int Graph::getCost(int node1, int node2){
+	int index = 0;
+	while(index < adjList[node1].edgeList.size()){
+		if(adjList[node1].edgeList[index].dest == node2){
+			return (int)adjList[node1].edgeList[index].cost;
+		}
+		index = index + 1;
+	}
+	return -1;
 }
 
 //Add an edge from node1 to node2, and from node2 to node1, with
