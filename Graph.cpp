@@ -127,3 +127,46 @@ void Graph::removeEdge(int node1, int node2)
         }
     }
 }
+
+
+
+int Graph :: DFS(int node2)
+{
+
+    std::stack<Edge>openList;
+
+    //If node2 is invalid, return -1.
+    if(node2 >= (int)adjList.size())
+    {
+        return -1;
+    }
+
+    for(int i = 0;i<(int)adjList.size();i++)
+    {
+        int SizeOfEdgeTwo = (int)adjList[i].edgeList.size();
+
+        for(int j = 0;j<SizeOfEdgeTwo;j++)
+        {
+           openList.push(adjList[i].edgeList[j]);
+    
+           if (adjList[i].edgeList[j].dest == node2)
+           {
+               return (int)adjList[i].edgeList[j].cost;
+           }
+           else
+           {
+               openList.pop();
+           }
+        }
+    }
+
+    return -1;
+}
+
+
+
+
+
+
+
+
