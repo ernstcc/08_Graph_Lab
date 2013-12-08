@@ -6,12 +6,21 @@
 #include "Graph.h"
 
 Graph::Graph(unsigned int numNodes){
-  //TODO
+  adjList.resize(numNodes);
+  for (int i = 0; i < numNodes; i++) {
+	  adjList[i].edgeList.resize(numNodes);
+  }
 }
-
+//Return the cost of the edge from node1 to node2. If there
+  // is no edge, return -1.
 int Graph::getCost(int node1, int node2){
-  //TODO
-  return -1;
+	int cost = -1;
+	for(int i = 0; i < adjList.size(); i++) {
+		 if(adjList[node1].edgeList[i].dest == node2) {
+		  cost = adjList[node1].edgeList[i].cost;	  
+		}
+	}
+  return cost;
 }
 
 //Add an edge from node1 to node2, and from node2 to node1, with
