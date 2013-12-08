@@ -15,7 +15,7 @@ Graph::Graph(unsigned int numNodes){
 // is no edge, return -1.
 int Graph::getCost(int node1, int node2){
 	int cost = -1;
-	for(int i = 0; i < adjList.size(); i++) {
+	for(int i = 0; i < adjList[node1].edgeList.size(); i++) {
 		 if(adjList[node1].edgeList[i].dest == node2) {
 		  cost = adjList[node1].edgeList[i].cost;	  
 		}
@@ -49,5 +49,16 @@ void Graph::addEdge(int node1, int node2, double cost){
 //Remove the edge from node1 to node2, and also from node2 to node1.
 // If there are no such edges, then don't do anything.
 void Graph::removeEdge(int node1, int node2){
-  //TODO
+  for(int i = 0; i < adjList[node1].edgeList.size(); i++) {
+	  if(adjList[node1].edgeList[i].dest == node2) {
+		  // http://www.cplusplus.com/reference/vector/vector/erase/
+		  adjList[node1].edgeList.erase(adjList[node1].edgeList.begin()+i);
+	  }
+  }
+   for(int i = 0; i < adjList[node2].edgeList.size(); i++) {
+	  if(adjList[node2].edgeList[i].dest == node1) {
+
+		  adjList[node2].edgeList.erase(adjList[node2].edgeList.begin()+i);
+	  }
+  }
 }
