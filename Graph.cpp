@@ -1,3 +1,5 @@
+
+
 /*****
  * Author   : Mingwei zhong
  * Date     : 2013-11-12
@@ -7,6 +9,8 @@
 
 #include "Graph.h"
 #include <string>
+#include <stack>
+#include <iostream>
 
 
 //The logic I used to implement this lab is from: http://opendatastructures.org/ods-cpp/12_2_Graph_as_Collection_Li.html
@@ -45,7 +49,7 @@ int Graph::getCost(int node1, int node2)
           return (int)adjList[node1].edgeList[i].cost;
         }
     }
-    
+
     int SizeOfEdgeTwo = (int)adjList[node2].edgeList.size();
 
     for (int i = 0; i < SizeOfEdgeTwo; i++)
@@ -55,7 +59,6 @@ int Graph::getCost(int node1, int node2)
             return (int)adjList[node2].edgeList[i].cost;
         }
     }
-    
 
     return -1;
 }
@@ -128,43 +131,53 @@ void Graph::removeEdge(int node1, int node2)
     }
 }
 
+void Graph :: DFSTraverse(int target,int v)
+{
+    visit[v] = true;
 
+    int Size = adjList[v].edgeList.size();
 
-int Graph :: DFS(int node2)
+    int interator = 0;
+
+    while(interator< Size)
+    {
+        if (adjList[v].edgeList[interator].dest == target)
+        {
+             std :: cout << "Target " << adjList[v].edgeList[interator].dest <<" found" << std::endl;
+             break;
+        }
+        else
+        {
+            int toVisit = adjList[v].edgeList[interator].dest;
+
+            if(!visit[toVisit])
+            {
+                DFSTraverse(target,toVisit);
+            }
+                interator++;
+        }
+    }
+}
+
+void Graph:: DFS(int target)
 {
 
-    std::stack<Edge>openList;
+    visit = new bool[(int)adjList.size()];
 
-    //If node2 is invalid, return -1.
-    if(node2 >= (int)adjList.size())
+    for(int i = 0;i<(int)adjList.size();i++)
     {
-        return -1;
+        visit[i] = false;
     }
 
     for(int i = 0;i<(int)adjList.size();i++)
     {
-        int SizeOfEdgeTwo = (int)adjList[i].edgeList.size();
-
-        for(int j = 0;j<SizeOfEdgeTwo;j++)
+        if(!visit[i])
         {
-           openList.push(adjList[i].edgeList[j]);
-    
-           if (adjList[i].edgeList[j].dest == node2)
-           {
-               return (int)adjList[i].edgeList[j].cost;
-           }
-           else
-           {
-               openList.pop();
-           }
+           DFSTraverse(target,i);
         }
     }
 
-    return -1;
 }
-
-
-
 
 
 
