@@ -7,7 +7,7 @@
 
 Graph::Graph(unsigned int numNodes){
 	//TODO
-	// Learned about vector's std methods from zhongm2 (http://www.cplusplus.com/reference/vector/vector/resize/)(https://github.com/JohnneyMing)
+	// Learned about vector's std methods from zhongm2 (http://www.cplusplus.com/reference/vector/vector/)(https://github.com/JohnneyMing)
 	adjList.resize(numNodes);
 }
 
@@ -38,4 +38,27 @@ void Graph::addEdge(int node1, int node2, double cost){
 // If there are no such edges, then don't do anything.
 void Graph::removeEdge(int node1, int node2){
 	//TODO
+	// Iterate through the adjList for node1 until the edgeList's dest 
+	// node is equal to node2
+	//	- On find, remove the data there
+	
+	for(int i=0; i<adjList[node1].edgeList.size(); i++)
+	{
+		if(adjList[node1].edgeList[i].dest==node2){
+			// logic and use of begin() found via luoy6 (https://github.com/MiamiOH-CSE274/08_Graph_Lab/tree/luoy6/)
+			adjList[node1].edgeList.erase(adjList[node1].edgeList.begin()+1);
+			return;
+		}
+	}
+
+	// Do same using other node as index
+
+	for(int i=0; i<adjList[node2].edgeList.size(); i++)
+	{
+		if(adjList[node2].edgeList[i].dest==node1){
+			adjList[node2].edgeList.erase(adjList[node2].edgeList.begin()+1);
+			return;
+		}
+	}
+
 }
