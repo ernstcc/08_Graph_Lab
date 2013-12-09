@@ -46,8 +46,8 @@ void Graph::removeEdge(int node1, int node2){
 	{
 		if(adjList[node1].edgeList[i].dest==node2){
 			// logic and use of begin() found via luoy6 (https://github.com/MiamiOH-CSE274/08_Graph_Lab/tree/luoy6/)
-			adjList[node1].edgeList.erase(adjList[node1].edgeList.begin()+1);
-			return;
+			adjList[node1].edgeList.erase(adjList[node1].edgeList.begin()+i);
+			break;
 		}
 	}
 
@@ -56,8 +56,8 @@ void Graph::removeEdge(int node1, int node2){
 	for(int i=0; i<adjList[node2].edgeList.size(); i++)
 	{
 		if(adjList[node2].edgeList[i].dest==node1){
-			adjList[node2].edgeList.erase(adjList[node2].edgeList.begin()+1);
-			return;
+			adjList[node2].edgeList.erase(adjList[node2].edgeList.begin()+i);
+			break;
 		}
 	}
 
