@@ -9,7 +9,7 @@ Graph::Graph(unsigned int numNodes){
 	adjList.resize(numNodes);
 }
 
-int Graph::getCost(int node1, int node2){
+double Graph::getCost(int node1, int node2){
 	int index = edgeExists(node1, node2);
 	if(index != -1)
 		return adjList[node1].edgeList[index].cost;
@@ -22,6 +22,8 @@ int Graph::getCost(int node1, int node2){
 void Graph::addEdge(int node1, int node2, double cost){
 	if(cost<0)
 		throw std::string("You provided a negative cost value. We are not breaking Physics today...");
+	if(node1 < 0 || node1 >= adjList.size() || node2 < 0 || node2 > adjList.size())
+		throw std::string("You have tried to add an edge between one or more non-existent nodes.");
 
 	int index = edgeExists(node1, node2);           //this seems to be an elegant handling: searching one list to check existence.
 	if(index != -1){
@@ -64,4 +66,46 @@ int Graph::edgeExists(int node1, int node2){
 			return i;							  //with destination node2, return the index of that Edge.
 	}
 	return -1;
+}
+
+//this implementation returns the shortest path between two particular nodes, but with a slight modification, it can generate the entire shortest path tree.
+double Graph::shortestPath(int node1, int node2){
+	if(node1 < 0 || node1 >= adjList.size() || node2 < 0 || node2 >= adjList.size())
+		throw std::string("You have asked for a path with a node which doesn't exist in the graph.");
+
+	int numVertices = adjList.size(), numVisited = 1, *visited = new int[numVertices];
+	double *distances = new double[numVertices]; //if you want the shortest path for each node, take this array and return it after
+	visited[0] = node1;							 //the algorithm runs. To get the whole tree, simply keep a "parents" array on the side
+	for(int i=0; i<numVertices; i++)
+		distances[i] = DBL_MAX; //we have to do this so there is a way to get the "shortest" path to the node by comparison.
+	distances[node1] = 0;
+	Heap<double, int> paths; //remember the priority is the distance and T is the parent and then the destination.
+	paths.add(std::make_pair(0, node1));
+
+	while(numVisited < numVertices){
+		std::pair<double, int> current = paths.remove();
+		int numEdges = adjList[current.second].edgeList.size();
+		for(int j=0; j<numEdges; j++){ //for each edge, relax them, toss them onto the heap (lowest priorities will bubble up on their own,
+			Edge curEdge = adjList[current.second].edgeList[j];
+			if((curEdge.cost + distances[current.second]) < distances[curEdge.dest]){
+				distances[curEdge.dest] = curEdge.cost + distances[current.second];
+
+				bool isVisited = false;
+				for(int k=0; k<numVisited; k++){
+					if(curEdge.dest == visited[k]){
+						isVisited = true;
+						break;
+					}//end iff
+				}//end inner for
+				if(!(isVisited))
+					paths.add(std::make_pair(curEdge.cost, curEdge.dest)); //this way you don't get stuck in an infinite loop, but values are still updated.
+				else
+					numVisited++;
+			}//end outter if
+		}//end for
+	}//end while
+	paths.~Heap();
+	double toReturn = distances[node2];
+	delete[] distances; delete[] visited;
+	return toReturn;
 }
