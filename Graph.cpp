@@ -1,3 +1,5 @@
+
+
 /*****
  * Author   : Mingwei zhong
  * Date     : 2013-11-12
@@ -7,6 +9,8 @@
 
 #include "Graph.h"
 #include <string>
+#include <stack>
+#include <iostream>
 
 
 //The logic I used to implement this lab is from: http://opendatastructures.org/ods-cpp/12_2_Graph_as_Collection_Li.html
@@ -45,7 +49,7 @@ int Graph::getCost(int node1, int node2)
           return (int)adjList[node1].edgeList[i].cost;
         }
     }
-    
+
     int SizeOfEdgeTwo = (int)adjList[node2].edgeList.size();
 
     for (int i = 0; i < SizeOfEdgeTwo; i++)
@@ -55,7 +59,6 @@ int Graph::getCost(int node1, int node2)
             return (int)adjList[node2].edgeList[i].cost;
         }
     }
-    
 
     return -1;
 }
@@ -127,3 +130,56 @@ void Graph::removeEdge(int node1, int node2)
         }
     }
 }
+
+void Graph :: DFSTraverse(int target,int v)
+{
+    visit[v] = true;
+
+    int Size = adjList[v].edgeList.size();
+
+    int interator = 0;
+
+    while(interator< Size)
+    {
+        if (adjList[v].edgeList[interator].dest == target)
+        {
+             std :: cout << "Target " << adjList[v].edgeList[interator].dest <<" found" << std::endl;
+             break;
+        }
+        else
+        {
+            int toVisit = adjList[v].edgeList[interator].dest;
+
+            if(!visit[toVisit])
+            {
+                DFSTraverse(target,toVisit);
+            }
+                interator++;
+        }
+    }
+}
+
+void Graph:: DFS(int target)
+{
+
+    visit = new bool[(int)adjList.size()];
+
+    for(int i = 0;i<(int)adjList.size();i++)
+    {
+        visit[i] = false;
+    }
+
+    for(int i = 0;i<(int)adjList.size();i++)
+    {
+        if(!visit[i])
+        {
+           DFSTraverse(target,i);
+        }
+    }
+
+}
+
+
+
+
+

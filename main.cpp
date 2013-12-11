@@ -25,6 +25,11 @@ void testGraph(){
   } else {
     std::cout << "SUCCESS: Got the right edge cost for removed edge" << std::endl;
   }
+  
+  g.DFS(-1);
+  g.DFS(0);
+  g.DFS(1);
+  g.DFS(3);
 
 }
 
