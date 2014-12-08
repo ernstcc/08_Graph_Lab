@@ -10,13 +10,17 @@ Graph::Graph(unsigned int numNodes){
 }
 
 double Graph::getCost(int node1, int node2){
-	if (node1 < adjList.size()){
+	if (node1>adjList.size() - 1 || node2 > adjList.size() - 1 || node1 < 0 || node2 < 0){
+		throw std::string("Node not present in graph");
+	}
+	else{
 		for (unsigned int x = 0; x < adjList[node1].edgeList.size(); x++){
 			if (adjList[node1].edgeList[x].dest == node2){
 				return adjList[node1].edgeList[x].cost;
 			}
 		}
 	}
+	
 	return -1.0;
 }
 
