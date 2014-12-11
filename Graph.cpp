@@ -87,7 +87,7 @@ void Graph::DFS(int start){
 			closedList[u] = 1;
 
 			for (unsigned int x = 0; x < adjList[u].edgeList.size(); x++){
-				if (closedList[adjList[u].edgeList[x].dest == 0]){
+				if (closedList[adjList[u].edgeList[x].dest] == 0){
 					openList.push(adjList[u].edgeList[x].dest);
 					closedList[adjList[u].edgeList[x].dest] = 1;
 				}
