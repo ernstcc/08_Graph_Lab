@@ -4,6 +4,8 @@
 	Code is original with help from Dr. Brinkman and web resources such as cplusplus.com and stackoverflow.com
  */
 #include "Graph.h"
+#include <stack>
+#include <vector>
 
 Graph::Graph(unsigned int numNodes){
 	adjList.resize(numNodes);
@@ -65,5 +67,31 @@ void Graph::removeEdge(int node1, int node2){
 			}
 		}
 	}
-	
+}
+
+void Graph::DFS(int start){
+	if (start>adjList.size() - 1 || start < 0){
+		throw std::string("Invalid starting node");
+	}
+	else{
+		std::stack<int> openList;
+		std::vector<int> closedList;
+
+		closedList.resize(adjList.size());
+		
+		openList.push(start);
+
+		while (!openList.empty()){
+			int u = openList.top();
+			openList.pop();
+			closedList[u] = 1;
+
+			for (unsigned int x = 0; x < adjList[u].edgeList.size(); x++){
+				if (closedList[adjList[u].edgeList[x].dest == 0]){
+					openList.push(adjList[u].edgeList[x].dest);
+					closedList[adjList[u].edgeList[x].dest] = 1;
+				}
+			}
+		}
+	}
 }
